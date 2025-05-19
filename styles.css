@@ -255,13 +255,6 @@ section#hero {
 
   margin-bottom: -20%;
 }
-
-@media (max-width: 468px) {
-  .about_content {
-    transform: skewX(-10deg);
-  }
-}
-
 .about_figure {
   height: auto;
   width: 2400px;
