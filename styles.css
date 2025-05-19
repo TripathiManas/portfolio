@@ -263,14 +263,14 @@ section#hero {
 }
 
 .about_figure {
-  height: 230px;
+  height: auto;
   width: 2400px;
   padding: var(--space-xl) 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 2px solid #ccc;
   display: inline-block;
   padding: 3px;
-  transform: skewX(-8deg);
+
   margin-right: 3%;
 }
 
