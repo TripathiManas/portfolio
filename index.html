@@ -66,8 +66,16 @@
             </figure>
             <div class="h5" style="max-width: 700px;">
               <p>
-                Hey, I’m Manas Tripathi, a Computer Science student at BITS Pilani, Hyderabad Campus, driven by a passion for solving real-world problems through technology. I enjoy building systems end-to-end—whether it’s a full-stack application, a design-driven product, or a scalable software tool. I’ve worked with Python, Java, JavaScript, React, and also explored AI/ML with tools like scikit-learn and TensorFlow. Currently, I’m the Design Head of the Computer Science Association, where I lead visual strategy and help run large-scale tech events. As a Senior Associate at E-Cell, I’ve worked on venture support, ecosystem collaborations, and alumni-driven initiatives. I was also a finalist in the Student Entrepreneurship Encouragement Program with Ace-It, an AI-based mock interview platform. 
-                Outside of tech, I love exploring startup ideas, reading about new innovations, watching and playing football.
+                Hey, I’m Manas Tripathi, a Computer Science student at BITS Pilani, Hyderabad Campus, driven by a
+                passion for solving real-world problems through technology. I enjoy building systems end-to-end—whether
+                it’s a full-stack application, a design-driven product, or a scalable software tool. I’ve worked with
+                Python, Java, JavaScript, React, and also explored AI/ML with tools like scikit-learn and TensorFlow.
+                Currently, I’m the Design Head of the Computer Science Association, where I lead visual strategy and
+                help run large-scale tech events. As a Senior Associate at E-Cell, I’ve worked on venture support,
+                ecosystem collaborations, and alumni-driven initiatives. I was also a finalist in the Student
+                Entrepreneurship Encouragement Program with Ace-It, an AI-based mock interview platform.
+                Outside of tech, I love exploring startup ideas, reading about new innovations, watching and playing
+                football.
               </p>
               <p>
                 Let’s connect—whether it’s for an opportunity, a collaboration, or a great conversation about tech,
@@ -164,6 +172,23 @@
         </div>
       </div>
     </section>
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+      <button class="chatbot-toggle">💬</button>
+      <div class="chatbot-box">
+        <div class="chatbot-header">
+          <p>Manas' Assistant</p>
+          <button class="chatbot-close">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+          <div class="bot-message">Hi! I'm your personal assistant. Ask me anything!</div>
+        </div>
+        <form id="chatbot-form">
+          <input type="text" id="user-input" placeholder="Type your message..." required />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
 
     <footer>
       <section id="footer">
@@ -175,6 +200,81 @@
       </section>
     </footer>
   </main>
+  <script>
+  const toggleBtn = document.querySelector('.chatbot-toggle');
+  const chatbotBox = document.querySelector('.chatbot-box');
+  const closeBtn = document.querySelector('.chatbot-close');
+  const form = document.getElementById('chatbot-form');
+  const input = document.getElementById('user-input');
+  const messages = document.getElementById('chatbot-messages');
+
+  toggleBtn.onclick = () => {
+    chatbotBox.style.display = 'flex';
+  };
+
+  closeBtn.onclick = () => {
+    chatbotBox.style.display = 'none';
+  };
+
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    const userMsg = input.value.trim();
+    if (!userMsg) return;
+    
+    addMessage(userMsg, 'user-message');
+    input.value = '';
+
+    // Simulated bot response
+    setTimeout(() => {
+      const botResponse = generateBotReply(userMsg);
+      addMessage(botResponse, 'bot-message');
+    }, 600);
+  };
+
+  function addMessage(text, className) {
+    const div = document.createElement('div');
+    div.className = className;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function generateBotReply(input) {
+  const lower = input.toLowerCase();
+
+  if (lower.includes('name') || lower.includes('who are you')) {
+    return "I'm Manas Tripathi's personal assistant! Ask me anything about him.";
+  }
+
+  if (lower.includes('manas') && lower.includes('tripathi')) {
+    return "Manas is a CSE undergrad at BITS Hyderabad, passionate about tech, design, and building cool projects.";
+  }
+
+  if (lower.includes('skills') || lower.includes('tech stack')) {
+    return "Manas is skilled in C++, Python, SQL, HTML/CSS/JS, and currently exploring Flask, React, and AI integrations.";
+  }
+
+  if (lower.includes('project')) {
+    return "You can check out Manas' projects like 2D floor planner, Relational database for Nova pharmacies and his Portfolio site in the Projects section!";
+  }
+
+  if (lower.includes('contact') || lower.includes('reach') || lower.includes('email')) {
+    return "You can contact Manas via the contact form or reach out to him at linkedin.com/tripathi-manas.";
+  }
+
+  if (lower.includes('experience') || lower.includes('work')) {
+    return "Manas has contributed to CSA and E-Cell events, and is interning at Climetaverse for the Summer. He is also exploring internship opportunites in software development";
+  }
+
+  if (lower.includes('education') || lower.includes('study') || lower.includes('college')) {
+    return "Manas is currently studying Computer Science at BITS Pilani, Hyderabad Campus, pursuing a degree in Computer Science.";
+  }
+
+  return "I'm still learning! Try asking about Manas' skills, projects, background, or how to contact him.";
+}
+
+</script>
+
 </body>
 
 </html>
